@@ -1,0 +1,1254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
+<title>Royal Islamic Engagement</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Amiri:ital,wght@0,400;0,700;1,400&family=Great+Vibes&display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/framer-motion/10.16.4/framer-motion.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+<style>
+:root{
+  --gold:#D4AF37;--gold-light:#F5D06B;--gold-dark:#A0820C;
+  --emerald:#0D4F2E;--emerald-mid:#1A6B3A;--emerald-light:#2A8A4A;
+  --dark:#050E07;--dark2:#0A1A0C;--dark3:#0F2415;
+  --cream:#FDF8E7;--ivory:#FAF3DC;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--dark);color:var(--cream);font-family:'Cormorant Garamond',serif;overflow-x:hidden;}
+::-webkit-scrollbar{width:4px;}
+::-webkit-scrollbar-track{background:var(--dark);}
+::-webkit-scrollbar-thumb{background:var(--gold);border-radius:2px;}
+
+/* ── ANIMATIONS ── */
+@keyframes shimmer{0%,100%{opacity:.6;}50%{opacity:1;}}
+@keyframes floatUp{0%{transform:translateY(0) rotate(0);opacity:1;}100%{transform:translateY(-100vh) rotate(360deg);opacity:0;}}
+@keyframes pulse-gold{0%,100%{box-shadow:0 0 15px var(--gold);}50%{box-shadow:0 0 40px var(--gold-light),0 0 80px var(--gold);}}
+@keyframes rotate-slow{from{transform:rotate(0deg);}to{transform:rotate(360deg);}}
+@keyframes fadeInUp{from{opacity:0;transform:translateY(30px);}to{opacity:1;transform:translateY(0);}}
+@keyframes glow-text{0%,100%{text-shadow:0 0 20px var(--gold),0 0 40px var(--gold-light);}50%{text-shadow:0 0 40px var(--gold),0 0 80px var(--gold-light),0 0 120px var(--gold);}}
+@keyframes lantern-sway{0%,100%{transform:rotate(-5deg);}50%{transform:rotate(5deg);}}
+@keyframes crescent-glow{0%,100%{filter:drop-shadow(0 0 10px var(--gold));}50%{filter:drop-shadow(0 0 30px var(--gold-light));}}
+@keyframes heart-float{0%{transform:translateY(0) scale(1);opacity:1;}100%{transform:translateY(-200px) scale(0);opacity:0;}}
+@keyframes sparkle{0%,100%{transform:scale(0) rotate(0);opacity:0;}50%{transform:scale(1) rotate(180deg);opacity:1;}}
+@keyframes countdown-pulse{0%,100%{transform:scale(1);}50%{transform:scale(1.05);}}
+@keyframes border-dance{0%{background-position:0% 50%;}50%{background-position:100% 50%;}100%{background-position:0% 50%;}}
+@keyframes slide-in-right{from{transform:translateX(100%);opacity:0;}to{transform:translateX(0);opacity:1;}}
+@keyframes modal-in{from{transform:scale(.8);opacity:0;}to{transform:scale(1);opacity:1;}}
+
+.animate-shimmer{animation:shimmer 2s ease-in-out infinite;}
+.animate-float{animation:floatUp linear infinite;}
+.animate-pulse-gold{animation:pulse-gold 2s ease-in-out infinite;}
+.animate-rotate{animation:rotate-slow 20s linear infinite;}
+.animate-fadeInUp{animation:fadeInUp .8s ease forwards;}
+.animate-glow{animation:glow-text 3s ease-in-out infinite;}
+.animate-sway{animation:lantern-sway 3s ease-in-out infinite;}
+.animate-crescent{animation:crescent-glow 3s ease-in-out infinite;}
+.animate-countdown{animation:countdown-pulse 1s ease-in-out infinite;}
+
+/* ── GLASS CARD ── */
+.glass{background:rgba(13,79,46,.25);backdrop-filter:blur(20px);border:1px solid rgba(212,175,55,.3);}
+.glass-dark{background:rgba(5,14,7,.6);backdrop-filter:blur(20px);border:1px solid rgba(212,175,55,.2);}
+
+/* ── GOLD GRADIENT TEXT ── */
+.gold-text{background:linear-gradient(135deg,var(--gold-dark),var(--gold-light),var(--gold),var(--gold-light),var(--gold-dark));background-size:300% 300%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:border-dance 4s ease infinite;}
+
+/* ── GEOMETRIC PATTERN ── */
+.islamic-pattern{background-image:url("data:image/svg+xml,%3Csvg width='60' height='60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%23D4AF37' stroke-width='.4' opacity='.15'%3E%3Cpolygon points='30,2 56,16 56,44 30,58 4,44 4,16'/%3E%3Cpolygon points='30,10 50,21 50,43 30,54 10,43 10,21'/%3E%3Cline x1='30' y1='2' x2='30' y2='58'/%3E%3Cline x1='4' y1='16' x2='56' y2='44'/%3E%3Cline x1='56' y1='16' x2='4' y2='44'/%3E%3C/g%3E%3C/svg%3E");}
+
+/* ── PREMIUM INPUT ── */
+.premium-input{background:rgba(13,79,46,.2);border:1px solid rgba(212,175,55,.4);color:var(--cream);font-family:'Cormorant Garamond',serif;font-size:1.1rem;transition:all .3s;}
+.premium-input:focus{outline:none;border-color:var(--gold);box-shadow:0 0 20px rgba(212,175,55,.3);}
+.premium-input::placeholder{color:rgba(253,248,231,.4);}
+
+/* ── GOLD BUTTON ── */
+.btn-gold{background:linear-gradient(135deg,var(--gold-dark),var(--gold),var(--gold-light));color:#050E07;font-weight:700;font-family:'Cinzel Decorative',serif;letter-spacing:.1em;transition:all .3s;position:relative;overflow:hidden;}
+.btn-gold::before{content:'';position:absolute;top:-50%;left:-60%;width:50%;height:200%;background:rgba(255,255,255,.3);transform:skewX(-20deg);transition:all .5s;}
+.btn-gold:hover::before{left:120%;}
+.btn-gold:hover{transform:translateY(-2px);box-shadow:0 10px 40px rgba(212,175,55,.5);}
+
+/* ── TIMELINE ── */
+.timeline-line{background:linear-gradient(to bottom,transparent,var(--gold),transparent);}
+
+/* ── GALLERY ── */
+.gallery-item{transition:all .4s;cursor:pointer;}
+.gallery-item:hover{transform:scale(1.03);z-index:10;}
+.gallery-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(5,14,7,.9),transparent);opacity:0;transition:opacity .3s;}
+.gallery-item:hover .gallery-overlay{opacity:1;}
+
+/* ── TOGGLE SWITCH ── */
+.toggle-track{background:rgba(13,79,46,.3);border:1px solid rgba(212,175,55,.3);transition:all .3s;cursor:pointer;}
+.toggle-track.on{background:linear-gradient(135deg,var(--gold-dark),var(--gold));box-shadow:0 0 20px rgba(212,175,55,.4);}
+.toggle-thumb{background:var(--cream);transition:all .3s;box-shadow:0 2px 8px rgba(0,0,0,.4);}
+.toggle-track.on .toggle-thumb{transform:translateX(28px);}
+
+/* ── SECTION DIVIDER ── */
+.divider{height:2px;background:linear-gradient(to right,transparent,var(--gold),transparent);margin:2rem auto;max-width:300px;}
+
+/* ── PARTICLES ── */
+.particle{position:fixed;pointer-events:none;z-index:1;}
+
+/* ── COUNTDOWN ── */
+.countdown-box{background:linear-gradient(135deg,rgba(13,79,46,.4),rgba(5,14,7,.6));border:1px solid rgba(212,175,55,.4);backdrop-filter:blur(10px);}
+
+/* ── MUSIC PLAYER ── */
+.music-btn{background:linear-gradient(135deg,var(--emerald),var(--emerald-mid));border:2px solid var(--gold);animation:pulse-gold 3s ease-in-out infinite;}
+
+/* ── RSVP CARD ── */
+.rsvp-option{border:2px solid rgba(212,175,55,.3);transition:all .3s;cursor:pointer;}
+.rsvp-option.selected{border-color:var(--gold);background:rgba(212,175,55,.2);box-shadow:0 0 20px rgba(212,175,55,.3);}
+
+/* ── WISHCARD ── */
+.wish-card{background:linear-gradient(135deg,rgba(13,79,46,.3),rgba(5,14,7,.5));border:1px solid rgba(212,175,55,.25);}
+
+/* ── ADMIN ── */
+.admin-card{background:rgba(10,26,12,.8);border:1px solid rgba(212,175,55,.2);backdrop-filter:blur(15px);}
+.stat-card{background:linear-gradient(135deg,rgba(13,79,46,.4),rgba(5,14,7,.6));border:1px solid rgba(212,175,55,.3);}
+
+/* ── MOSQUE SILHOUETTE ── */
+.mosque{position:absolute;bottom:0;width:100%;pointer-events:none;opacity:.15;}
+
+/* ── RESPONSIVE ── */
+@media(min-width:768px){
+  body{font-size:1.1rem;}
+  .max-mobile{max-width:480px;margin:auto;}
+}
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+<script>
+// ═══════════════════════════════════════════════
+// ROYAL ISLAMIC ENGAGEMENT INVITATION
+// ═══════════════════════════════════════════════
+const {useState,useEffect,useRef,useCallback,useMemo}=React;
+
+// ── CONSTANTS ──────────────────────────────────
+const ADMIN_USER='salmankavthekar';
+const ADMIN_PASS='Srk@725626';
+const EMAILJS_SERVICE='service_engagement';
+const EMAILJS_TEMPLATE='template_rsvp';
+const EMAILJS_PUBLIC='YOUR_PUBLIC_KEY';
+const ADMIN_EMAIL='salmankavthekar8@gmail.com';
+
+const DEMO_DATA={
+  groomName:'Salman',brideName:'Muskaan',
+  groomFull:'Salman Ahmed Kavthekar',brideFull:'Muskaan Fatima Sheikh',
+  initials:'S & M',
+  engagementDate:'2025-12-20',engagementTime:'06:00 PM',
+  venueName:'Royal Palace Banquet Hall',
+  venueAddress:'123 Islamic Avenue, Mumbai, Maharashtra 400001',
+  mapsLink:'https://maps.google.com',
+  islamicQuote:'وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَاجًا',
+  islamicQuoteTranslation:'"And of His signs is that He created for you from yourselves mates" — Quran 30:21',
+  customDua:'May Allah bless this union with love, mercy, and eternal happiness. Ameen.',
+  ourStory:[
+    {year:'2022',title:'First Meeting',desc:'Two souls destined to meet crossed paths at a family gathering, and the world changed forever.'},
+    {year:'2023',title:'Growing Closer',desc:'Through countless conversations and shared dreams, a beautiful friendship blossomed into something deeper.'},
+    {year:'2024',title:'He Said Yes to Her',desc:'Under a canopy of stars, with the crescent moon as witness, they chose each other for life.'},
+    {year:'2025',title:'The Engagement',desc:'And now, with the blessings of both families, they announce their sacred engagement.'},
+  ],
+  welcomeMsg:'With the blessings of Allah (SWT) and with hearts full of joy',
+  guestGreeting:'aapka dil se istiqbal hai',
+  invitationMsg:'We joyfully request the honor of your presence as we celebrate the engagement of our beloved children.',
+  saveTheDateText:'Save The Date',
+  dressCode:'Formal / Traditional Islamic Attire',
+  footerText:'© 2025 Salman & Muskaan. Made with ♥ and Barakah.',
+  whatsappNumber:'+919999999999',
+  familyNames:'Sheikh Family & Kavthekar Family',
+  schedule:[
+    {time:'05:30 PM',event:'Guest Arrival & Welcome'},
+    {time:'06:00 PM',event:'Nikkah Ceremony'},
+    {time:'07:00 PM',event:'Ring Exchange'},
+    {time:'07:30 PM',event:'Dinner & Celebration'},
+  ],
+};
+
+const GALLERY_PLACEHOLDERS=[
+  {id:1,bg:'linear-gradient(135deg,#1A3A1A,#2A5A2A)',label:'Couple Photo 1'},
+  {id:2,bg:'linear-gradient(135deg,#3A2A0A,#5A4A1A)',label:'Couple Photo 2'},
+  {id:3,bg:'linear-gradient(135deg,#1A1A3A,#2A2A5A)',label:'Family Photo'},
+  {id:4,bg:'linear-gradient(135deg,#3A0A1A,#5A1A2A)',label:'Venue Photo'},
+  {id:5,bg:'linear-gradient(135deg,#0A3A1A,#1A5A2A)',label:'Ceremony'},
+  {id:6,bg:'linear-gradient(135deg,#2A0A3A,#4A1A5A)',label:'Details'},
+];
+
+const ANIMATION_THEMES=['lanterns','hearts','sparkles','moonlight','floral','particles','lights','cinematic'];
+
+// ── UTILS ──────────────────────────────────────
+const ls={
+  get:(k,d=null)=>{try{const v=localStorage.getItem(k);return v?JSON.parse(v):d;}catch{return d;}},
+  set:(k,v)=>{try{localStorage.setItem(k,JSON.stringify(v));}catch{}},
+  rm:(k)=>{try{localStorage.removeItem(k);}catch{}},
+};
+
+const getVisitorId=()=>{let id=ls.get('visitor_id');if(!id){id='v_'+Date.now()+'_'+Math.random().toString(36).slice(2);ls.set('visitor_id',id);}return id;};
+const getDevice=()=>(/Mobi|Android/i.test(navigator.userAgent)?'Mobile':'Desktop');
+const getBrowser=()=>{const ua=navigator.userAgent;if(ua.includes('Chrome'))return 'Chrome';if(ua.includes('Firefox'))return 'Firefox';if(ua.includes('Safari'))return 'Safari';return 'Other';};
+
+const trackVisitor=(name)=>{
+  const visitors=ls.get('visitors',[]);
+  const entry={id:getVisitorId(),name,device:getDevice(),browser:getBrowser(),timestamp:new Date().toISOString(),duration:0};
+  const existing=visitors.findIndex(v=>v.id===entry.id);
+  if(existing>=0)visitors[existing]={...visitors[existing],lastVisit:entry.timestamp,visits:(visitors[existing].visits||1)+1};
+  else visitors.push({...entry,visits:1});
+  ls.set('visitors',visitors);
+  sessionStorage.setItem('entry_time',Date.now());
+};
+
+const formatCountdown=(ms)=>{
+  if(ms<=0)return{d:'00',h:'00',m:'00',s:'00'};
+  const d=Math.floor(ms/86400000),h=Math.floor((ms%86400000)/3600000),m=Math.floor((ms%3600000)/60000),s=Math.floor((ms%60000)/1000);
+  return{d:String(d).padStart(2,'0'),h:String(h).padStart(2,'0'),m:String(m).padStart(2,'0'),s:String(s).padStart(2,'0')};
+};
+
+// ── SVG COMPONENTS ─────────────────────────────
+const IslamicGeometric=({size=200,opacity=.15})=>(
+  <svg width={size} height={size} viewBox="0 0 200 200" style={{opacity}} fill="none" stroke="#D4AF37">
+    <polygon points="100,10 180,55 180,145 100,190 20,145 20,55" strokeWidth=".8"/>
+    <polygon points="100,30 160,62.5 160,137.5 100,170 40,137.5 40,62.5" strokeWidth=".6"/>
+    <polygon points="100,50 140,70 140,130 100,150 60,130 60,70" strokeWidth=".5"/>
+    <line x1="100" y1="10" x2="100" y2="190" strokeWidth=".4"/>
+    <line x1="20" y1="55" x2="180" y2="145" strokeWidth=".4"/>
+    <line x1="180" y1="55" x2="20" y2="145" strokeWidth=".4"/>
+    <circle cx="100" cy="100" r="20" strokeWidth=".5"/>
+    <circle cx="100" cy="100" r="40" strokeWidth=".3"/>
+  </svg>
+);
+
+const MosilhouetteSVG=()=>(
+  <svg viewBox="0 0 1440 200" fill="#0D4F2E" xmlns="http://www.w3.org/2000/svg" className="mosque">
+    <path d="M0,200 L0,150 L60,150 L60,100 L80,80 L100,60 L120,80 L140,100 L160,100 L160,80 L180,60 L200,40 L220,20 L240,40 L260,60 L280,80 L280,100 L300,100 L320,80 L340,60 L360,80 L380,100 L380,150 L440,150 L440,130 L460,110 L480,90 L500,110 L520,130 L520,150 L580,150 L580,100 L600,80 L620,60 L640,40 L660,60 L680,80 L700,100 L700,150 L760,150 L780,120 L800,100 L820,80 L840,60 L860,80 L880,100 L900,120 L920,150 L980,150 L1000,130 L1020,110 L1040,90 L1060,110 L1080,130 L1100,150 L1160,150 L1180,120 L1200,100 L1220,80 L1240,60 L1260,80 L1280,100 L1300,120 L1320,150 L1380,150 L1380,200 Z"/>
+  </svg>
+);
+
+const CrescentMoon=({size=60})=>(
+  <svg width={size} height={size} viewBox="0 0 60 60" className="animate-crescent">
+    <defs><filter id="glow"><feGaussianBlur stdDeviation="3" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
+    <path d="M30 5 A25 25 0 1 0 55 30 A15 15 0 1 1 30 5 Z" fill="#D4AF37" filter="url(#glow)"/>
+    <circle cx="48" cy="12" r="3" fill="#D4AF37"/>
+    <circle cx="52" cy="20" r="2" fill="#D4AF37"/>
+    <circle cx="44" cy="8" r="1.5" fill="#D4AF37"/>
+  </svg>
+);
+
+const StarSVG=({size=20})=>(
+  <svg width={size} height={size} viewBox="0 0 20 20" fill="#D4AF37">
+    <polygon points="10,1 12.9,7 19.5,7.6 14.8,11.9 16.4,18.5 10,15 3.6,18.5 5.2,11.9 0.5,7.6 7.1,7"/>
+  </svg>
+);
+
+// ── PARTICLE SYSTEM ────────────────────────────
+const ParticleSystem=({theme})=>{
+  const [particles,setParticles]=useState([]);
+  useEffect(()=>{
+    const generate=()=>{
+      const arr=[];
+      for(let i=0;i<20;i++){
+        arr.push({
+          id:i,x:Math.random()*100,delay:Math.random()*8,
+          duration:6+Math.random()*10,size:4+Math.random()*12,
+          type:theme,
+        });
+      }
+      setParticles(arr);
+    };
+    generate();
+  },[theme]);
+
+  const renderParticle=(p)=>{
+    const base={
+      position:'fixed',left:`${p.x}%`,bottom:'-50px',
+      animation:`floatUp ${p.duration}s ${p.delay}s linear infinite`,
+      pointerEvents:'none',zIndex:1,
+    };
+    if(p.type==='hearts')return <div key={p.id} style={{...base,fontSize:`${p.size}px`}}>💛</div>;
+    if(p.type==='sparkles')return <div key={p.id} style={{...base,width:p.size,height:p.size,background:'radial-gradient(circle,#F5D06B,transparent)',borderRadius:'50%'}}/>;
+    if(p.type==='lanterns')return <div key={p.id} style={{...base,fontSize:`${p.size}px`}}>🪔</div>;
+    return <div key={p.id} style={{...base,width:4,height:4,background:'#D4AF37',borderRadius:'50%',boxShadow:'0 0 6px #D4AF37'}}/>;
+  };
+  return <>{particles.map(renderParticle)}</>;
+};
+
+// ── LOADING SCREEN ─────────────────────────────
+const LoadingScreen=({onDone})=>{
+  const [progress,setProgress]=useState(0);
+  const [text,setText]=useState('بسم الله الرحمن الرحيم');
+  useEffect(()=>{
+    const msgs=['بسم الله الرحمن الرحيم','Loading Royal Experience...','Preparing Your Invitation...','Almost Ready...'];
+    let i=0,p=0;
+    const ti=setInterval(()=>{p+=2;setProgress(p);if(p%25===0&&i<msgs.length-1){i++;setText(msgs[i]);}if(p>=100){clearInterval(ti);setTimeout(onDone,500);}},40);
+    return()=>clearInterval(ti);
+  },[onDone]);
+  return(
+    <div style={{position:'fixed',inset:0,background:'radial-gradient(ellipse at center,#0D4F2E,#050E07)',display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'center',zIndex:9999}}>
+      <div className="islamic-pattern" style={{position:'absolute',inset:0,opacity:.3}}/>
+      <div style={{position:'relative',marginBottom:'2rem'}}>
+        <div className="animate-rotate" style={{width:120,height:120,border:'2px solid rgba(212,175,55,.3)',borderRadius:'50%',position:'absolute',top:-10,left:-10}}/>
+        <div className="animate-rotate" style={{width:100,height:100,border:'1px solid rgba(212,175,55,.2)',borderRadius:'50%',position:'absolute',top:0,left:0,animationDirection:'reverse'}}/>
+        <CrescentMoon size={80}/>
+      </div>
+      <div style={{fontFamily:"'Cinzel Decorative',serif",fontSize:'1.5rem',letterSpacing:'.3em'}} className="gold-text animate-glow">ROYAL NIKAH</div>
+      <div style={{fontFamily:"'Amiri',serif",fontSize:'1.2rem',color:'rgba(212,175,55,.8)',marginTop:'.5rem',marginBottom:'2rem'}}>{text}</div>
+      <div style={{width:280,height:3,background:'rgba(212,175,55,.2)',borderRadius:2,overflow:'hidden'}}>
+        <div style={{height:'100%',width:`${progress}%`,background:'linear-gradient(90deg,#A0820C,#D4AF37,#F5D06B)',transition:'width .1s',borderRadius:2}}/>
+      </div>
+      <div style={{color:'rgba(212,175,55,.6)',fontSize:'.85rem',marginTop:'.5rem',fontFamily:"'Cormorant Garamond',serif"}}>{progress}%</div>
+    </div>
+  );
+};
+
+// ── INTRO SCREEN ───────────────────────────────
+const IntroScreen=({onEnter})=>{
+  const [show,setShow]=useState(false);
+  useEffect(()=>setTimeout(()=>setShow(true),100),[]);
+  return(
+    <div style={{position:'fixed',inset:0,background:'radial-gradient(ellipse 80% 60% at 50% 40%,#1A6B3A 0%,#0D4F2E 40%,#050E07 100%)',display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'center',zIndex:100,overflow:'hidden'}}>
+      <div className="islamic-pattern" style={{position:'absolute',inset:0,opacity:.2}}/>
+      <MosilhouetteSVG/>
+      <ParticleSystem theme="sparkles"/>
+
+      {/* Lanterns */}
+      {[{l:'8%',d:0},{l:'85%',d:1.5},{l:'45%',d:.7}].map((ln,i)=>(
+        <div key={i} className="animate-sway" style={{position:'absolute',top:'5%',left:ln.l,animationDelay:`${ln.d}s`,fontSize:'3rem'}}>🪔</div>
+      ))}
+
+      {/* Crescent */}
+      <div style={{position:'absolute',top:'8%',right:'12%'}}>
+        <CrescentMoon size={70}/>
+      </div>
+
+      <div style={{position:'relative',zIndex:10,textAlign:'center',padding:'0 1.5rem',opacity:show?1:0,transform:show?'translateY(0)':'translateY(30px)',transition:'all 1.2s ease'}}>
+        <div style={{fontFamily:"'Amiri',serif",fontSize:'1.1rem',color:'rgba(212,175,55,.7)',marginBottom:'1rem'}}>
+          بسم الله الرحمن الرحيم
+        </div>
+
+        {/* Geometric frame */}
+        <div style={{position:'relative',display:'inline-block',padding:'2rem 3rem',marginBottom:'1.5rem'}}>
+          <div style={{position:'absolute',top:0,left:0,width:40,height:40,borderTop:'2px solid #D4AF37',borderLeft:'2px solid #D4AF37'}}/>
+          <div style={{position:'absolute',top:0,right:0,width:40,height:40,borderTop:'2px solid #D4AF37',borderRight:'2px solid #D4AF37'}}/>
+          <div style={{position:'absolute',bottom:0,left:0,width:40,height:40,borderBottom:'2px solid #D4AF37',borderLeft:'2px solid #D4AF37'}}/>
+          <div style={{position:'absolute',bottom:0,right:0,width:40,height:40,borderBottom:'2px solid #D4AF37',borderRight:'2px solid #D4AF37'}}/>
+
+          <div style={{fontFamily:"'Great Vibes',cursive",fontSize:'3.5rem',lineHeight:1.1}} className="gold-text">
+            Salman
+          </div>
+          <div style={{color:'rgba(212,175,55,.6)',fontSize:'1rem',margin:'.3rem 0',fontFamily:"'Cormorant Garamond',serif",letterSpacing:'.4em'}}>
+            & 
+          </div>
+          <div style={{fontFamily:"'Great Vibes',cursive",fontSize:'3.5rem',lineHeight:1.1}} className="gold-text">
+            Muskaan
+          </div>
+        </div>
+
+        <div style={{fontFamily:"'Cinzel Decorative',serif",fontSize:'.75rem',letterSpacing:'.4em',color:'rgba(212,175,55,.8)',marginBottom:'.5rem',textTransform:'uppercase'}}>
+          Engagement Invitation
+        </div>
+        <div style={{color:'rgba(253,248,231,.5)',fontSize:'.9rem',fontFamily:"'Cormorant Garamond',serif",fontStyle:'italic',marginBottom:'2.5rem'}}>
+          20th December 2025 • Mumbai
+        </div>
+
+        <button onClick={onEnter} className="btn-gold animate-pulse-gold" style={{padding:'1rem 3rem',borderRadius:50,border:'none',fontSize:'1rem',fontFamily:"'Cinzel Decorative',serif",letterSpacing:'.2em',cursor:'pointer',display:'block',margin:'0 auto'}}>
+          ✦ Enter ✦
+        </button>
+        <div style={{color:'rgba(212,175,55,.4)',fontSize:'.75rem',marginTop:'1rem',fontFamily:"'Cormorant Garamond',serif"}}>
+          Tap to begin your journey
+        </div>
+      </div>
+    </div>
+  );
+};
+
+// ── NAME ENTRY ─────────────────────────────────
+const NameEntry=({onSubmit})=>{
+  const [name,setName]=useState('');
+  const [greeting,setGreeting]=useState(false);
+  const [err,setErr]=useState('');
+
+  const handleSubmit=()=>{
+    if(!name.trim()){setErr('Please enter your name');return;}
+    trackVisitor(name.trim());
+    ls.set('guest_name',name.trim());
+    setGreeting(true);
+    setTimeout(()=>onSubmit(name.trim()),2500);
+  };
+
+  return(
+    <div style={{position:'fixed',inset:0,background:'radial-gradient(ellipse at center,#0D4F2E 0%,#050E07 70%)',display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'center',zIndex:90,padding:'2rem'}}>
+      <div className="islamic-pattern" style={{position:'absolute',inset:0,opacity:.2}}/>
+      <ParticleSystem theme="particles"/>
+
+      {!greeting?(
+        <div style={{textAlign:'center',width:'100%',maxWidth:400,position:'relative',zIndex:10,animation:'fadeInUp .8s ease'}}>
+          <CrescentMoon size={60}/>
+          <div style={{fontFamily:"'Amiri',serif",fontSize:'1.8rem',color:'rgba(212,175,55,.9)',margin:'1rem 0 .3rem'}} className="animate-glow">
+            السلام عليكم
+          </div>
+          <div style={{fontFamily:"'Cormorant Garamond',serif",fontSize:'1.4rem',color:'var(--cream)',marginBottom:'.3rem'}}>
+            Apna Naam Darj Kare
+          </div>
+          <div style={{color:'rgba(212,175,55,.5)',fontSize:'.85rem',fontStyle:'italic',marginBottom:'2rem',fontFamily:"'Cormorant Garamond',serif"}}>
+            Enter your name to receive your invitation
+          </div>
+
+          <div style={{background:'rgba(13,79,46,.2)',border:'1px solid rgba(212,175,55,.3)',borderRadius:16,padding:'2rem',backdropFilter:'blur(20px)'}}>
+            <input
+              className="premium-input"
+              style={{width:'100%',padding:'1rem 1.2rem',borderRadius:12,fontSize:'1.1rem',marginBottom:'1rem'}}
+              placeholder="Your Name / آپ کا نام"
+              value={name}
+              onChange={e=>{setName(e.target.value);setErr('');}}
+              onKeyDown={e=>e.key==='Enter'&&handleSubmit()}
+            />
+            {err&&<div style={{color:'#ff6b6b',fontSize:'.85rem',marginBottom:'.5rem'}}>{err}</div>}
+            <button onClick={handleSubmit} className="btn-gold" style={{width:'100%',padding:'1rem',borderRadius:12,border:'none',fontSize:'1rem',cursor:'pointer'}}>
+              ✦ Khush Amdeed ✦
+            </button>
+          </div>
+        </div>
+      ):(
+        <div style={{textAlign:'center',position:'relative',zIndex:10,animation:'modal-in .5s ease'}}>
+          <div style={{fontSize:'4rem',marginBottom:'1rem',animation:'sparkle 1s ease infinite'}}>✨</div>
+          <div style={{fontFamily:"'Great Vibes',cursive",fontSize:'3rem',marginBottom:'.5rem'}} className="gold-text animate-glow">
+            {name}
+          </div>
+          <div style={{fontFamily:"'Cormorant Garamond',serif",fontSize:'1.3rem',color:'var(--cream)',lineHeight:1.6}}>
+            aapka dil se<br/>
+            <span style={{fontFamily:"'Amiri',serif",color:'rgba(212,175,55,.9)',fontSize:'1.6rem'}}>istiqbal hai</span>
+          </div>
+          <div style={{marginTop:'1.5rem',color:'rgba(212,175,55,.5)',fontSize:'.85rem',fontStyle:'italic'}}>
+            Loading your invitation...
+          </div>
+        </div>
+      )}
+    </div>
+  );
+};
+
+// ── COUNTDOWN TIMER ────────────────────────────
+const Countdown=({date})=>{
+  const [time,setTime]=useState({d:'00',h:'00',m:'00',s:'00'});
+  useEffect(()=>{
+    const update=()=>{const diff=new Date(date)-Date.now();setTime(formatCountdown(diff));};
+    update();const t=setInterval(update,1000);return()=>clearInterval(t);
+  },[date]);
+  const boxes=([['Days',time.d],['Hours',time.h],['Minutes',time.m],['Seconds',time.s]]);
+  return(
+    <div style={{display:'flex',gap:'1rem',justifyContent:'center',flexWrap:'wrap'}}>
+      {boxes.map(([label,val])=>(
+        <div key={label} className="countdown-box animate-countdown" style={{textAlign:'center',padding:'.8rem 1.2rem',borderRadius:12,minWidth:70}}>
+          <div style={{fontFamily:"'Cinzel Decorative',serif",fontSize:'2rem',fontWeight:700}} className="gold-text">{val}</div>
+          <div style={{fontSize:'.65rem',letterSpacing:'.15em',color:'rgba(212,175,55,.6)',textTransform:'uppercase',marginTop:'.2rem'}}>{label}</div>
+        </div>
+      ))}
+    </div>
+  );
+};
+
+// ── HERO SECTION ───────────────────────────────
+const HeroSection=({data,guestName})=>(
+  <section style={{minHeight:'100vh',position:'relative',display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'center',padding:'2rem 1.5rem',textAlign:'center',background:'radial-gradient(ellipse 80% 70% at 50% 30%,#1A6B3A,#0A1A0C 70%,#050E07)',overflow:'hidden'}}>
+    <div className="islamic-pattern" style={{position:'absolute',inset:0,opacity:.15}}/>
+    <MosilhouetteSVG/>
+    <ParticleSystem theme="sparkles"/>
+
+    {/* Top crescent */}
+    <div style={{marginBottom:'1rem'}}><CrescentMoon size={65}/></div>
+
+    {/* Arabic text */}
+    <div style={{fontFamily:"'Amiri',serif",fontSize:'1.4rem',color:'rgba(212,175,55,.8)',marginBottom:'.5rem'}}>
+      {data.islamicQuote}
+    </div>
+    <div style={{fontFamily:"'Cormorant Garamond',serif",fontStyle:'italic',fontSize:'.85rem',color:'rgba(253,248,231,.5)',marginBottom:'2rem',maxWidth:320}}>
+      {data.islamicQuoteTranslation}
+    </div>
+
+    {/* Welcome */}
+    {guestName&&(
+      <div style={{fontFamily:"'Cormorant Garamond',serif",fontSize:'1rem',color:'rgba(212,175,55,.7)',marginBottom:'.5rem',fontStyle:'italic'}}>
+        Dear <span style={{fontFamily:"'Great Vibes',cursive",fontSize:'1.3rem',color:'var(--gold-light)'}}>{guestName}</span>,
+      </div>
+    )}
+    <div style={{fontFamily:"'Cormorant Garamond',serif",fontSize:'1rem',color:'rgba(253,248,231,.6)',marginBottom:'1.5rem',maxWidth:320,lineHeight:1.6}}>
+      {data.welcomeMsg}
+    </div>
+
+    {/* Names */}
+    <div style={{position:'relative',padding:'1.5rem 2rem',marginBottom:'1.5rem'}}>
+      <div style={{position:'absolute',top:0,left:0,width:30,height:30,borderTop:'1px solid #D4AF37',borderLeft:'1px solid #D4AF37'}}/>
+      <div style={{position:'absolute',top:0,right:0,width:30,height:30,borderTop:'1px solid #D4AF37',borderRight:'1px solid #D4AF37'}}/>
+      <div style={{position:'absolute',bottom:0,left:0,width:30,height:30,borderBottom:'1px solid #D4AF37',borderLeft:'1px solid #D4AF37'}}/>
+      <div style={{position:'absolute',bottom:0,right:0,width:30,height:30,borderBottom:'1px solid #D4AF37',borderRight:'1px solid #D4AF37'}}/>
+      <div style={{fontFamily:"'Great Vibes',cursive",fontSize:'3.8rem',lineHeight:1}} className="gold-text animate-glow">{data.groomName}</div>
+      <div style={{fontFamily:"'Amiri',serif",fontSize:'1.1rem',color:'rgba(212,175,55,.6)',margin:'.3rem 0'}}>& </div>
+      <div style={{fontFamily:"'Great Vibes',cursive",fontSize:'3.8rem',lineHeight:1}} className="gold-text animate-glow">{data.brideName}</div>
+    </div>
+
+    <div style={{fontFamily:"'Cinzel Decorative',serif",fontSize:'.7rem',letterSpacing:'.4em',color:'rgba(212,175,55,.8)',textTransform:'uppercase',marginBottom:'1rem'}}>
+      ✦ Engagement ✦
+    </div>
+
+    <div className="divider"/>
+
+    <div style={{marginBottom:'2rem'}}>
+      <div style={{fontFamily:"'Cormorant Garamond',serif",fontSize:'1.1rem',color:'rgba(253,248,231,.7)',marginBottom:'.3rem'}}>
+        {new Date(data.engagementDate).toLocaleDateString('en-IN',{weekday:'long',year:'numeric',month:'long',day:'numeric'})}
+      </div>
+      <div style={{color:'rgba(212,175,55,.7)',fontSize:'1rem'}}>{data.engagementTime} • {data.venueName}</div>
+    </div>
+
+    <Countdown date={data.engagementDate}/>
+
+    <div style={{marginTop:'2rem',color:'rgba(212,175,55,.5)',fontSize:'.8rem',fontStyle:'italic',fontFamily:"'Cormorant Garamond',serif"}}>
+      {data.customDua}
+    </div>
+  </section>
+);
+
+// ── OUR STORY ──────────────────────────────────
+const StorySection=({data})=>(
+  <section style={{padding:'4rem 1.5rem',background:'linear-gradient(180deg,#050E07,#0A1A0C,#050E07)'}}>
+    <div style={{textAlign:'center',marginBottom:'3rem'}}>
+      <div style={{fontFamily:"'Amiri',serif",fontSize:'1.2rem',color:'rgba(212,175,55,.6)',marginBottom:'.5rem'}}>حكايتنا</div>
+      <div style={{fontFamily:"'Cinzel Decorative',serif",fontSize:'1.5rem',marginBottom:'.5rem'}} className="gold-text">Our Story</div>
+      <div className="divider"/>
+    </div>
+
+    <div style={{position:'relative',maxWidth:500,margin:'0 auto'}}>
+      {/* Timeline line */}
+      <div style={{position:'absolute',left:'50%',top:0,bottom:0,width:2,transform:'translateX(-50%)',background:'linear-gradient(to bottom,transparent,rgba(212,175,55,.4),rgba(212,175,55,.6),rgba(212,175,55,.4),transparent)'}}/>
+
+      {data.ourStory.map((item,i)=>(
+        <div key={i} style={{display:'flex',justifyContent:i%2===0?'flex-start':'flex-end',marginBottom:'2.5rem',paddingLeft:i%2===0?0:'50%',paddingRight:i%2===0?'50%':0}}>
+          {/* Center dot */}
+          <div style={{position:'absolute',left:'50%',transform:'translateX(-50%)',width:14,height:14,background:'var(--gold)',borderRadius:'50%',border:'3px solid #050E07',boxShadow:'0 0 10px var(--gold)',marginTop:18}}/>
+
+          <div className="glass" style={{borderRadius:16,padding:'1.2rem',marginLeft:i%2===0?0:'1rem',marginRight:i%2===0?'1rem':0,maxWidth:'45vw'}}>
+            <div style={{fontFamily:"'Cinzel Decorative',serif",fontSize:'.7rem',letterSpacing:'.2em'}} className="gold-text">{item.year}</div>
+            <div style={{fontFamily:"'Great Vibes',cursive",fontSize:'1.4rem',color:'var(--cream)',margin:'.3rem 0'}}>{item.title}</div>
+            <div style={{fontSize:'.8rem',color:'rgba(253,248,231,.6)',lineHeight:1.5,fontFamily:"'Cormorant Garamond',serif"}}>{item.desc}</div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+);
+
+// ── GALLERY ────────────────────────────────────
+const GallerySection=({personalImages,usePersonal})=>{
+  const [active,setActive]=useState(null);
+  const images=usePersonal&&personalImages.length>0?personalImages:GALLERY_PLACEHOLDERS;
+  return(
+    <section style={{padding:'4rem 1.5rem',background:'#050E07'}}>
+      <div style={{textAlign:'center',marginBottom:'2.5rem'}}>
+        <div style={{fontFamily:"'Amiri',serif",fontSize:'1.2rem',color:'rgba(212,175,55,.6)',marginBottom:'.5rem'}}>معرض الصور</div>
+        <div style={{fontFamily:"'Cinzel Decorative',serif",fontSize:'1.5rem',marginBottom:'.5rem'}} className="gold-text">Photo Gallery</div>
+        <div className="divider"/>
+      </div>
+
+      <div style={{columns:2,gap:'1rem',maxWidth:600,margin:'0 auto'}}>
+        {images.map((img,i)=>(
+          <div key={img.id||i} className="gallery-item" style={{breakInside:'avoid',marginBottom:'1rem',borderRadius:12,overflow:'hidden',border:'1px solid rgba(212,175,55,.2)',position:'relative',cursor:'pointer'}} onClick={()=>setActive(img)}>
+            {img.url?(
+              <img src={img.url} alt="" style={{width:'100%',display:'block',objectFit:'cover',aspectRatio:i%3===0?'1':'4/3'}}/>
+            ):(
+              <div style={{background:img.bg,aspectRatio:i%3===0?'1':'4/3',display:'flex',alignItems:'center',justifyContent:'center'}}>
+                <div style={{textAlign:'center',opacity:.6}}>
+                  <div style={{fontSize:'2rem'}}>🌹</div>
+                  <div style={{fontSize:'.7rem',color:'rgba(212,175,55,.7)',fontFamily:"'Cormorant Garamond',serif"}}>{img.label}</div>
+                </div>
+              </div>
+            )}
+            <div className="gallery-overlay"/>
+          </div>
+        ))}
+      </div>
+
+      {/* Fullscreen Preview */}
+      {active&&(
+        <div style={{position:'fixed',inset:0,background:'rgba(0,0,0,.95)',zIndex:200,display:'flex',alignItems:'center',justifyContent:'center'}} onClick={()=>setActive(null)}>
+          {active.url?<img src={active.url} alt="" style={{maxWidth:'95vw',maxHeight:'90vh',borderRadius:8,border:'1px solid rgba(212,175,55,.4)'}}/>
+          :<div style={{background:active.bg,width:300,height:300,borderRadius:12,display:'flex',alignItems:'center',justifyContent:'center',fontSize:'4rem'}}>🌹</div>}
+          <button style={{position:'absolute',top:20,right:20,background:'none',border:'1px solid rgba(212,175,55,.5)',color:'var(--gold)',width:40,height:40,borderRadius:'50%',cursor:'pointer',fontSize:'1.2rem'}}>×</button>
+        </div>
+      )}
+    </section>
+  );
+};
+
+// ── EVENT DETAILS ──────────────────────────────
+const EventSection=({data})=>(
+  <section style={{padding:'4rem 1.5rem',background:'linear-gradient(180deg,#050E07,#0A1A0C)'}}>
+    <div style={{textAlign:'center',marginBottom:'2.5rem'}}>
+      <div style={{fontFamily:"'Amiri',serif",fontSize:'1.2rem',color:'rgba(212,175,55,.6)',marginBottom:'.5rem'}}>تفاصيل الحفل</div>
+      <div style={{fontFamily:"'Cinzel Decorative',serif",fontSize:'1.5rem',marginBottom:'.5rem'}} className="gold-text">Event Details</div>
+      <div className="divider"/>
+    </div>
+
+    <div style={{maxWidth:480,margin:'0 auto'}}>
+      {/* Save the Date */}
+      <div className="glass" style={{borderRadius:20,padding:'2rem',textAlign:'center',marginBottom:'1.5rem'}}>
+        <div style={{fontSize:'2rem',marginBottom:'.5rem'}}>📅</div>
+        <div style={{fontFamily:"'Cinzel Decorative',serif",fontSize:'.8rem',letterSpacing:'.3em',color:'rgba(212,175,55,.7)',marginBottom:'.5rem'}}>SAVE THE DATE</div>
+        <div style={{fontFamily:"'Great Vibes',cursive",fontSize:'2.2rem'}} className="gold-text">
+          {new Date(data.engagementDate).toLocaleDateString('en-IN',{month:'long',day:'numeric',year:'numeric'})}
+        </div>
+        <div style={{color:'rgba(253,248,231,.6)',marginTop:'.5rem',fontFamily:"'Cormorant Garamond',serif"}}>{data.engagementTime}</div>
+      </div>
+
+      {/* Venue */}
+      <div className="glass" style={{borderRadius:20,padding:'1.5rem',marginBottom:'1.5rem'}}>
+        <div style={{display:'flex',alignItems:'flex-start',gap:'1rem'}}>
+          <div style={{fontSize:'2rem'}}>🕌</div>
+          <div>
+            <div style={{fontFamily:"'Cinzel Decorative',serif",fontSize:'.75rem',letterSpacing:'.2em',color:'rgba(212,175,55,.7)',marginBottom:'.3rem'}}>VENUE</div>
+            <div style={{fontFamily:"'Great Vibes',cursive",fontSize:'1.6rem',color:'var(--cream)'}}>{data.venueName}</div>
+            <div style={{fontSize:'.85rem',color:'rgba(253,248,231,.6)',marginTop:'.3rem',fontFamily:"'Cormorant Garamond',serif"}}>{data.venueAddress}</div>
+            <a href={data.mapsLink} target="_blank" rel="noreferrer">
+              <button className="btn-gold" style={{marginTop:'1rem',padding:'.6rem 1.5rem',borderRadius:8,border:'none',fontSize:'.8rem',cursor:'pointer'}}>
+                📍 View on Maps
+              </button>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      {/* Schedule */}
+      <div className="glass" style={{borderRadius:20,padding:'1.5rem',marginBottom:'1.5rem'}}>
+        <div style={{fontFamily:"'Cinzel Decorative',serif",fontSize:'.75rem',letterSpacing:'.2em',color:'rgba(212,175,55,.7)',marginBottom:'1rem',textAlign:'center'}}>EVENT SCHEDULE</div>
+        {data.schedule.map((s,i)=>(
+          <div key={i} style={{display:'flex',alignItems:'center',gap:'1rem',padding:'.6rem 0',borderBottom:i<data.schedule.length-1?'1px solid rgba(212,175,55,.1)':'none'}}>
+            <div style={{fontFamily:"'Cinzel Decorative',serif",fontSize:'.7rem',color:'var(--gold)',minWidth:70}}>{s.time}</div>
+            <div style={{width:8,height:8,background:'var(--gold)',borderRadius:'50%',flexShrink:0}}/>
+            <div style={{fontSize:'.9rem',color:'rgba(253,248,231,.8)',fontFamily:"'Cormorant Garamond',serif"}}>{s.event}</div>
+          </div>
+        ))}
+      </div>
+
+      {/* Dress Code */}
+      <div className="glass" style={{borderRadius:16,padding:'1.2rem',textAlign:'center'}}>
+        <div style={{fontSize:'1.5rem',marginBottom:'.3rem'}}>👔</div>
+        <div style={{fontFamily:"'Cinzel Decorative',serif",fontSize:'.7rem',letterSpacing:'.2em',color:'rgba(212,175,55,.6)'}}>DRESS CODE</div>
+        <div style={{fontFamily:"'Cormorant Garamond',serif",fontSize:'1rem',color:'rgba(253,248,231,.8)',marginTop:'.3rem'}}>{data.dressCode}</div>
+      </div>
+    </div>
+  </section>
+);
+
+// ── DIGITAL INVITATION CARD ────────────────────
+const InvitationCard=({data,guestName})=>{
+  const handleShare=()=>{
+    const text=`Assalam Alaikum! ${data.groomFull} and ${data.brideFull} ke Engagement mein aapko dil se invite kiya jata hai. Date: ${new Date(data.engagementDate).toLocaleDateString('en-IN')} | Venue: ${data.venueName}`;
+    if(navigator.share)navigator.share({title:'Royal Engagement Invitation',text,url:window.location.href});
+    else window.open(`https://wa.me/?text=${encodeURIComponent(text)}`,'_blank');
+    const ev=ls.get('events',[]);ev.push({type:'whatsapp_share',time:new Date().toISOString()});ls.set('events',ev);
+  };
+  const handleDownload=()=>{
+    const ev=ls.get('events',[]);ev.push({type:'download',time:new Date().toISOString()});ls.set('events',ev);
+    alert('Invitation card saved! (In production, this generates a PDF.)');
+  };
+  return(
+    <section style={{padding:'4rem 1.5rem',background:'linear-gradient(180deg,#0A1A0C,#050E07)'}}>
+      <div style={{textAlign:'center',marginBottom:'2.5rem'}}>
+        <div style={{fontFamily:"'Cinzel Decorative',serif",fontSize:'1.5rem',marginBottom:'.5rem'}} className="gold-text">Digital Invitation</div>
+        <div className="divider"/>
+      </div>
+
+      {/* Card */}
+      <div style={{maxWidth:380,margin:'0 auto'}}>
+        <div style={{background:'linear-gradient(135deg,#0D4F2E 0%,#050E07 50%,#0D4F2E 100%)',border:'2px solid rgba(212,175,55,.4)',borderRadius:20,padding:'2rem',textAlign:'center',position:'relative',overflow:'hidden',boxShadow:'0 20px 60px rgba(0,0,0,.6),inset 0 0 60px rgba(13,79,46,.3)'}}>
+          <div className="islamic-pattern" style={{position:'absolute',inset:0,opacity:.1}}/>
+
+          {/* Corner ornaments */}
+          {['top:0;left:0','top:0;right:0','bottom:0;left:0','bottom:0;right:0'].map((pos,i)=>(
+            <div key={i} style={{position:'absolute',...Object.fromEntries(pos.split(';').map(p=>p.split(':'))),width:50,height:50,opacity:.6}}>
+              <StarSVG size={16}/>
+            </div>
+          ))}
+
+          <div style={{position:'relative',zIndex:2}}>
+            <div style={{fontFamily:"'Amiri',serif",fontSize:'1.8rem',color:'rgba(212,175,55,.9)',marginBottom:'.5rem'}}>بسم الله</div>
+            <CrescentMoon size={50}/>
+            <div style={{margin:'1rem 0 .3rem',fontFamily:"'Cormorant Garamond',serif",color:'rgba(253,248,231,.6)',fontSize:'.85rem'}}>With the blessings of Allah</div>
+            <div style={{fontFamily:"'Cinzel Decorative',serif",fontSize:'.65rem',letterSpacing:'.3em',color:'rgba(212,175,55,.7)',marginBottom:'1rem'}}>
+              {data.familyNames}
+            </div>
+            <div style={{fontFamily:"'Cormorant Garamond',serif",fontSize:'.9rem',color:'rgba(253,248,231,.7)',marginBottom:'1.5rem',lineHeight:1.6}}>
+              {data.invitationMsg}
+            </div>
+
+            <div style={{background:'linear-gradient(135deg,rgba(212,175,55,.15),rgba(212,175,55,.05))',border:'1px solid rgba(212,175,55,.3)',borderRadius:12,padding:'1rem',marginBottom:'1rem'}}>
+              <div style={{fontFamily:"'Great Vibes',cursive",fontSize:'2.5rem',lineHeight:1.2}} className="gold-text">{data.groomName}</div>
+              <div style={{color:'rgba(212,175,55,.5)',margin:'.2rem 0',fontFamily:"'Amiri',serif"}}>♥</div>
+              <div style={{fontFamily:"'Great Vibes',cursive",fontSize:'2.5rem',lineHeight:1.2}} className="gold-text">{data.brideName}</div>
+            </div>
+
+            <div style={{fontSize:'.8rem',color:'rgba(253,248,231,.6)',marginBottom:'.3rem',fontFamily:"'Cormorant Garamond',serif"}}>
+              {new Date(data.engagementDate).toLocaleDateString('en-IN',{weekday:'long',year:'numeric',month:'long',day:'numeric'})}
+            </div>
+            <div style={{fontSize:'.8rem',color:'rgba(212,175,55,.7)',marginBottom:'.3rem',fontFamily:"'Cormorant Garamond',serif"}}>{data.engagementTime}</div>
+            <div style={{fontSize:'.75rem',color:'rgba(253,248,231,.5)',fontFamily:"'Cormorant Garamond',serif"}}>{data.venueName}</div>
+          </div>
+        </div>
+
+        {/* Action buttons */}
+        <div style={{display:'flex',gap:'1rem',marginTop:'1.5rem'}}>
+          <button onClick={handleDownload} className="btn-gold" style={{flex:1,padding:'.9rem',borderRadius:12,border:'none',fontSize:'.85rem',cursor:'pointer'}}>
+            ⬇ Download
+          </button>
+          <button onClick={handleShare} style={{flex:1,padding:'.9rem',borderRadius:12,border:'2px solid var(--gold)',background:'transparent',color:'var(--gold)',fontSize:'.85rem',cursor:'pointer',fontFamily:"'Cinzel Decorative',serif",letterSpacing:'.1em',transition:'all .3s'}}>
+            📤 Share
+          </button>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+// ── RSVP SECTION ───────────────────────────────
+const RSVPSection=({data,guestName})=>{
+  const [form,setForm]=useState({name:guestName||'',guests:1,attending:'yes',message:''});
+  const [status,setStatus]=useState('idle'); // idle | sending | success | error
+
+  const handleSubmit=async()=>{
+    if(!form.name.trim())return;
+    setStatus('sending');
+    const rsvps=ls.get('rsvps',[]);
+    rsvps.push({...form,timestamp:new Date().toISOString()});
+    ls.set('rsvps',rsvps);
+
+    // Simulate email send (EmailJS would go here)
+    await new Promise(r=>setTimeout(r,1500));
+    setStatus('success');
+  };
+
+  if(status==='success')return(
+    <section style={{padding:'4rem 1.5rem',background:'linear-gradient(180deg,#050E07,#0A1A0C)',textAlign:'center'}}>
+      <div style={{maxWidth:400,margin:'0 auto'}}>
+        <div style={{fontSize:'4rem',marginBottom:'1rem'}}>✨</div>
+        <div style={{fontFamily:"'Great Vibes',cursive",fontSize:'2.5rem',marginBottom:'.5rem'}} className="gold-text">JazakAllah Khair</div>
+        <div style={{fontFamily:"'Cormorant Garamond',serif",fontSize:'1.1rem',color:'rgba(253,248,231,.7)'}}>Your RSVP has been received. We look forward to celebrating with you!</div>
+      </div>
+    </section>
+  );
+
+  return(
+    <section style={{padding:'4rem 1.5rem',background:'linear-gradient(180deg,#050E07,#0A1A0C)'}}>
+      <div style={{textAlign:'center',marginBottom:'2.5rem'}}>
+        <div style={{fontFamily:"'Amiri',serif",fontSize:'1.2rem',color:'rgba(212,175,55,.6)',marginBottom:'.5rem'}}>التأكيد</div>
+        <div style={{fontFamily:"'Cinzel Decorative',serif",fontSize:'1.5rem',marginBottom:'.5rem'}} className="gold-text">RSVP</div>
+        <div className="divider"/>
+      </div>
+
+      <div style={{maxWidth:480,margin:'0 auto'}}>
+        <div className="glass" style={{borderRadius:20,padding:'2rem'}}>
+          <div style={{marginBottom:'1.2rem'}}>
+            <label style={{display:'block',fontFamily:"'Cormorant Garamond',serif",color:'rgba(212,175,55,.7)',fontSize:'.85rem',marginBottom:'.4rem',letterSpacing:'.1em'}}>YOUR NAME</label>
+            <input className="premium-input" style={{width:'100%',padding:'.9rem 1rem',borderRadius:10}} placeholder="Your Full Name" value={form.name} onChange={e=>setForm({...form,name:e.target.value})}/>
+          </div>
+
+          <div style={{marginBottom:'1.2rem'}}>
+            <label style={{display:'block',fontFamily:"'Cormorant Garamond',serif",color:'rgba(212,175,55,.7)',fontSize:'.85rem',marginBottom:'.4rem',letterSpacing:'.1em'}}>NUMBER OF GUESTS</label>
+            <input className="premium-input" style={{width:'100%',padding:'.9rem 1rem',borderRadius:10}} type="number" min="1" max="10" value={form.guests} onChange={e=>setForm({...form,guests:e.target.value})}/>
+          </div>
+
+          <div style={{marginBottom:'1.2rem'}}>
+            <label style={{display:'block',fontFamily:"'Cormorant Garamond',serif",color:'rgba(212,175,55,.7)',fontSize:'.85rem',marginBottom:'.8rem',letterSpacing:'.1em'}}>WILL YOU ATTEND?</label>
+            <div style={{display:'flex',gap:'1rem'}}>
+              {[['yes','✓ Yes, InshaAllah'],['no','✗ Unable to Attend']].map(([val,label])=>(
+                <div key={val} className={`rsvp-option${form.attending===val?' selected':''}`} style={{flex:1,padding:'.9rem',borderRadius:10,textAlign:'center',cursor:'pointer',fontFamily:"'Cormorant Garamond',serif",fontSize:'.9rem',color:form.attending===val?'var(--gold)':'rgba(253,248,231,.6)'}} onClick={()=>setForm({...form,attending:val})}>
+                  {label}
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div style={{marginBottom:'1.5rem'}}>
+            <label style={{display:'block',fontFamily:"'Cormorant Garamond',serif",color:'rgba(212,175,55,.7)',fontSize:'.85rem',marginBottom:'.4rem',letterSpacing:'.1em'}}>SPECIAL MESSAGE (OPTIONAL)</label>
+            <textarea className="premium-input" style={{width:'100%',padding:'.9rem 1rem',borderRadius:10,minHeight:100,resize:'vertical'}} placeholder="Any dietary requirements or special requests..." value={form.message} onChange={e=>setForm({...form,message:e.target.value})}/>
+          </div>
+
+          <button onClick={handleSubmit} className="btn-gold animate-pulse-gold" style={{width:'100%',padding:'1rem',borderRadius:12,border:'none',fontSize:'1rem',cursor:'pointer'}} disabled={status==='sending'}>
+            {status==='sending'?'✦ Sending...':'✦ Confirm Attendance ✦'}
+          </button>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+// ── WISHES SECTION ─────────────────────────────
+const WishesSection=({guestName})=>{
+  const [form,setForm]=useState({name:guestName||'',message:''});
+  const [sent,setSent]=useState(false);
+  const [wishes,setWishes]=useState(()=>ls.get('wishes',[]));
+
+  const handleSubmit=async()=>{
+    if(!form.name.trim()||!form.message.trim())return;
+    const wish={...form,timestamp:new Date().toISOString(),id:Date.now()};
+    const updated=[wish,...wishes].slice(0,20);
+    ls.set('wishes',updated);
+    setWishes(updated);
+    setSent(true);
+    setTimeout(()=>{setSent(false);setForm({name:'',message:''});},2000);
+  };
+
+  return(
+    <section style={{padding:'4rem 1.5rem',background:'linear-gradient(180deg,#0A1A0C,#050E07)'}}>
+      <div style={{textAlign:'center',marginBottom:'2.5rem'}}>
+        <div style={{fontFamily:"'Amiri',serif",fontSize:'1.2rem',color:'rgba(212,175,55,.6)',marginBottom:'.5rem'}}>الدعوات</div>
+        <div style={{fontFamily:"'Cinzel Decorative',serif",fontSize:'1.5rem',marginBottom:'.5rem'}} className="gold-text">Wishes & Blessings</div>
+        <div className="divider"/>
+      </div>
+
+      <div style={{maxWidth:480,margin:'0 auto'}}>
+        <div className="glass" style={{borderRadius:20,padding:'1.5rem',marginBottom:'2rem'}}>
+          <input className="premium-input" style={{width:'100%',padding:'.9rem 1rem',borderRadius:10,marginBottom:'1rem'}} placeholder="Your Name" value={form.name} onChange={e=>setForm({...form,name:e.target.value})}/>
+          <textarea className="premium-input" style={{width:'100%',padding:'.9rem 1rem',borderRadius:10,minHeight:100,resize:'vertical',marginBottom:'1rem'}} placeholder="Send your duas and blessings to the couple..." value={form.message} onChange={e=>setForm({...form,message:e.target.value})}/>
+          <button onClick={handleSubmit} className="btn-gold" style={{width:'100%',padding:'.9rem',borderRadius:10,border:'none',cursor:'pointer'}}>
+            {sent?'✓ Sent JazakAllah!':'💌 Send Blessings'}
+          </button>
+        </div>
+
+        {/* Wish cards */}
+        {wishes.map(w=>(
+          <div key={w.id} className="wish-card" style={{borderRadius:16,padding:'1.2rem',marginBottom:'1rem'}}>
+            <div style={{display:'flex',justifyContent:'space-between',marginBottom:'.5rem'}}>
+              <div style={{fontFamily:"'Great Vibes',cursive",fontSize:'1.3rem',color:'var(--gold-light)'}}>{w.name}</div>
+              <div style={{fontSize:'.7rem',color:'rgba(253,248,231,.3)',fontFamily:"'Cormorant Garamond',serif"}}>{new Date(w.timestamp).toLocaleDateString()}</div>
+            </div>
+            <div style={{fontFamily:"'Cormorant Garamond',serif",fontSize:'.9rem',color:'rgba(253,248,231,.7)',lineHeight:1.5,fontStyle:'italic'}}>"{w.message}"</div>
+          </div>
+        ))}
+        {wishes.length===0&&(
+          <div style={{textAlign:'center',color:'rgba(212,175,55,.4)',fontFamily:"'Cormorant Garamond',serif",fontStyle:'italic',fontSize:'.9rem'}}>
+            Be the first to send your blessings ✨
+          </div>
+        )}
+      </div>
+    </section>
+  );
+};
+
+// ── MUSIC PLAYER ───────────────────────────────
+const MusicPlayer=()=>{
+  const [playing,setPlaying]=useState(false);
+  const [show,setShow]=useState(false);
+  useEffect(()=>setTimeout(()=>setShow(true),3000),[]);
+  if(!show)return null;
+  return(
+    <div style={{position:'fixed',bottom:90,right:16,zIndex:50}}>
+      <button onClick={()=>setPlaying(!playing)} className="music-btn" style={{width:50,height:50,borderRadius:'50%',cursor:'pointer',fontSize:'1.3rem',display:'flex',alignItems:'center',justifyContent:'center',transition:'all .3s'}}>
+        {playing?'⏸':'🎵'}
+      </button>
+      {playing&&(
+        <div style={{position:'absolute',bottom:55,right:0,background:'rgba(10,26,12,.9)',border:'1px solid rgba(212,175,55,.3)',borderRadius:12,padding:'.8rem',whiteSpace:'nowrap',backdropFilter:'blur(10px)'}}>
+          <div style={{fontSize:'.7rem',color:'rgba(212,175,55,.8)',fontFamily:"'Cormorant Garamond',serif"}}>♪ Islamic Nasheed</div>
+          <div style={{fontSize:'.6rem',color:'rgba(253,248,231,.4)'}}>Soft Instrumental</div>
+        </div>
+      )}
+    </div>
+  );
+};
+
+// ── FOOTER ─────────────────────────────────────
+const Footer=({data})=>(
+  <footer style={{padding:'3rem 1.5rem 5rem',background:'#050E07',textAlign:'center',borderTop:'1px solid rgba(212,175,55,.1)'}}>
+    <CrescentMoon size={40}/>
+    <div style={{fontFamily:"'Great Vibes',cursive",fontSize:'2rem',margin:'.8rem 0'}} className="gold-text">
+      {data.groomName} & {data.brideName}
+    </div>
+    <div className="divider"/>
+    <div style={{fontFamily:"'Amiri',serif",fontSize:'1rem',color:'rgba(212,175,55,.6)',marginBottom:'.5rem'}}>
+      بارك الله لكما وبارك عليكما وجمع بينكما في خير
+    </div>
+    <div style={{fontFamily:"'Cormorant Garamond',serif",fontStyle:'italic',fontSize:'.8rem',color:'rgba(253,248,231,.3)'}}>
+      {data.footerText}
+    </div>
+  </footer>
+);
+
+// ── SCROLL NAV ─────────────────────────────────
+const ScrollNav=({sections,active})=>(
+  <div style={{position:'fixed',right:8,top:'50%',transform:'translateY(-50%)',zIndex:40,display:'flex',flexDirection:'column',gap:8}}>
+    {sections.map((s,i)=>(
+      <button key={i} onClick={()=>document.getElementById(s.id)?.scrollIntoView({behavior:'smooth'})} style={{width:8,height:8,borderRadius:'50%',border:'none',cursor:'pointer',transition:'all .3s',background:active===i?'var(--gold)':'rgba(212,175,55,.3)',padding:0}}/>
+    ))}
+  </div>
+);
+
+// ══════════════════════════════════════════════
+// ADMIN COMPONENTS
+// ══════════════════════════════════════════════
+
+const AdminLogin=({onLogin})=>{
+  const [u,setU]=useState('');
+  const [p,setP]=useState('');
+  const [err,setErr]=useState('');
+  const [loading,setLoading]=useState(false);
+
+  const handleLogin=async()=>{
+    setLoading(true);
+    await new Promise(r=>setTimeout(r,800));
+    if(u===ADMIN_USER&&p===ADMIN_PASS){
+      ls.set('admin_session',{token:'admin_'+Date.now(),login:new Date().toISOString()});
+      onLogin();
+    }else{setErr('Invalid credentials. Please try again.');}
+    setLoading(false);
+  };
+
+  return(
+    <div style={{minHeight:'100vh',background:'radial-gradient(ellipse at center,#0D4F2E,#050E07)',display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'center',padding:'2rem'}}>
+      <div className="islamic-pattern" style={{position:'absolute',inset:0,opacity:.1}}/>
+      <div style={{position:'relative',zIndex:10,width:'100%',maxWidth:380}}>
+        <div style={{textAlign:'center',marginBottom:'2rem'}}>
+          <CrescentMoon size={60}/>
+          <div style={{fontFamily:"'Cinzel Decorative',serif",fontSize:'1.2rem',marginTop:'1rem'}} className="gold-text">Admin Portal</div>
+          <div style={{color:'rgba(212,175,55,.5)',fontSize:'.85rem',fontFamily:"'Cormorant Garamond',serif"}}>Royal Engagement Dashboard</div>
+        </div>
+
+        <div className="glass" style={{borderRadius:20,padding:'2rem'}}>
+          <input className="premium-input" style={{width:'100%',padding:'.9rem 1rem',borderRadius:10,marginBottom:'1rem'}} placeholder="Username" value={u} onChange={e=>setU(e.target.value)}/>
+          <input type="password" className="premium-input" style={{width:'100%',padding:'.9rem 1rem',borderRadius:10,marginBottom:'1rem'}} placeholder="Password" value={p} onChange={e=>setP(e.target.value)} onKeyDown={e=>e.key==='Enter'&&handleLogin()}/>
+          {err&&<div style={{color:'#ff6b6b',fontSize:'.8rem',marginBottom:'1rem',textAlign:'center'}}>{err}</div>}
+          <button onClick={handleLogin} className="btn-gold animate-pulse-gold" style={{width:'100%',padding:'1rem',borderRadius:12,border:'none',cursor:'pointer'}} disabled={loading}>
+            {loading?'Verifying...':'🔐 Login to Dashboard'}
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+// ── TOGGLE SWITCH ──────────────────────────────
+const Toggle=({label,desc,value,onChange})=>(
+  <div style={{display:'flex',justifyContent:'space-between',alignItems:'flex-start',gap:'1rem',padding:'1.2rem',background:'rgba(13,79,46,.1)',border:'1px solid rgba(212,175,55,.15)',borderRadius:12,marginBottom:'1rem'}}>
+    <div style={{flex:1}}>
+      <div style={{fontFamily:"'Cinzel Decorative',serif",fontSize:'.7rem',letterSpacing:'.1em',color:'rgba(212,175,55,.9)',marginBottom:'.3rem'}}>{label}</div>
+      <div style={{fontSize:'.75rem',color:'rgba(253,248,231,.5)',fontFamily:"'Cormorant Garamond',serif"}}>{desc}</div>
+    </div>
+    <div className={`toggle-track${value?' on':''}`} style={{width:56,height:28,borderRadius:14,position:'relative',flexShrink:0,marginTop:2}} onClick={()=>onChange(!value)}>
+      <div className="toggle-thumb" style={{position:'absolute',top:3,left:3,width:22,height:22,borderRadius:'50%'}}/>
+    </div>
+  </div>
+);
+
+// ── ADMIN DASHBOARD ────────────────────────────
+const AdminDashboard=({onLogout,contentData,setContentData,toggles,setToggles,personalImages,setPersonalImages})=>{
+  const [tab,setTab]=useState('overview');
+  const rsvps=ls.get('rsvps',[]);
+  const wishes=ls.get('wishes',[]);
+  const visitors=ls.get('visitors',[]);
+  const events=ls.get('events',[]);
+
+  const stats=[
+    {label:'Total Visitors',val:visitors.length,icon:'👥'},
+    {label:'RSVPs',val:rsvps.length,icon:'📝'},
+    {label:'Attending',val:rsvps.filter(r=>r.attending==='yes').length,icon:'✅'},
+    {label:'Wishes',val:wishes.length,icon:'💌'},
+    {label:'Downloads',val:events.filter(e=>e.type==='download').length,icon:'⬇'},
+    {label:'WA Shares',val:events.filter(e=>e.type==='whatsapp_share').length,icon:'📤'},
+  ];
+
+  const handleImageUpload=(e)=>{
+    const files=Array.from(e.target.files);
+    files.forEach(f=>{
+      const reader=new FileReader();
+      reader.onload=ev=>{
+        setPersonalImages(prev=>{
+          const updated=[...prev,{id:Date.now()+Math.random(),url:ev.target.result,label:f.name}];
+          ls.set('personal_images',updated);
+          return updated;
+        });
+      };
+      reader.readAsDataURL(f);
+    });
+  };
+
+  const handleContentChange=(field,val)=>{
+    const updated={...contentData,[field]:val};
+    setContentData(updated);
+    ls.set('custom_content',updated);
+  };
+
+  const tabs=[
+    {id:'overview',label:'📊 Overview'},
+    {id:'rsvps',label:'📝 RSVPs'},
+    {id:'wishes',label:'💌 Wishes'},
+    {id:'visitors',label:'👥 Visitors'},
+    {id:'content',label:'✏️ Content'},
+    {id:'gallery',label:'🖼 Gallery'},
+    {id:'settings',label:'⚙️ Settings'},
+  ];
+
+  return(
+    <div style={{minHeight:'100vh',background:'#050E07',paddingBottom:80}}>
+      <div className="islamic-pattern" style={{position:'fixed',inset:0,opacity:.05,pointerEvents:'none'}}/>
+
+      {/* Header */}
+      <div style={{background:'rgba(10,26,12,.9)',borderBottom:'1px solid rgba(212,175,55,.2)',padding:'1rem 1.5rem',position:'sticky',top:0,zIndex:30,backdropFilter:'blur(20px)',display:'flex',justifyContent:'space-between',alignItems:'center'}}>
+        <div>
+          <div style={{fontFamily:"'Cinzel Decorative',serif",fontSize:'.9rem'}} className="gold-text">Admin Dashboard</div>
+          <div style={{fontSize:'.7rem',color:'rgba(253,248,231,.4)',fontFamily:"'Cormorant Garamond',serif"}}>Royal Engagement Control Panel</div>
+        </div>
+        <button onClick={onLogout} style={{background:'rgba(212,175,55,.1)',border:'1px solid rgba(212,175,55,.3)',color:'rgba(212,175,55,.8)',padding:'.4rem .9rem',borderRadius:8,cursor:'pointer',fontSize:'.75rem',fontFamily:"'Cinzel Decorative',serif"}}>Logout</button>
+      </div>
+
+      {/* Tab Nav */}
+      <div style={{display:'flex',gap:'.5rem',padding:'1rem',overflowX:'auto',borderBottom:'1px solid rgba(212,175,55,.1)'}}>
+        {tabs.map(t=>(
+          <button key={t.id} onClick={()=>setTab(t.id)} style={{padding:'.5rem 1rem',borderRadius:20,border:'1px solid '+(tab===t.id?'var(--gold)':'rgba(212,175,55,.2)'),background:tab===t.id?'rgba(212,175,55,.15)':'transparent',color:tab===t.id?'var(--gold)':'rgba(253,248,231,.5)',fontSize:'.75rem',cursor:'pointer',whiteSpace:'nowrap',fontFamily:"'Cormorant Garamond',serif",transition:'all .2s'}}>
+            {t.label}
+          </button>
+        ))}
+      </div>
+
+      <div style={{padding:'1.5rem',maxWidth:700,margin:'0 auto'}}>
+
+        {/* OVERVIEW */}
+        {tab==='overview'&&(
+          <>
+            <div style={{display:'grid',gridTemplateColumns:'repeat(3,1fr)',gap:'1rem',marginBottom:'2rem'}}>
+              {stats.map(s=>(
+                <div key={s.label} className="stat-card" style={{borderRadius:16,padding:'1rem',textAlign:'center'}}>
+                  <div style={{fontSize:'1.5rem',marginBottom:'.3rem'}}>{s.icon}</div>
+                  <div style={{fontFamily:"'Cinzel Decorative',serif",fontSize:'1.3rem'}} className="gold-text">{s.val}</div>
+                  <div style={{fontSize:'.65rem',color:'rgba(253,248,231,.5)',fontFamily:"'Cormorant Garamond',serif"}}>{s.label}</div>
+                </div>
+              ))}
+            </div>
+
+            {/* Toggles */}
+            <div style={{fontFamily:"'Cinzel Decorative',serif",fontSize:'.8rem',color:'rgba(212,175,55,.7)',marginBottom:'1rem',letterSpacing:'.2em'}}>CONTENT CONTROLS</div>
+            <Toggle label="Use Personal Engagement Content" desc="Show real couple details instead of demo data" value={toggles.content} onChange={v=>setToggles({...toggles,content:v})}/>
+            <Toggle label="Use Personal Images & Gallery" desc="Show uploaded photos instead of placeholders" value={toggles.images} onChange={v=>setToggles({...toggles,images:v})}/>
+            <Toggle label="Use Personal Animation & Video Media" desc="Use custom videos instead of auto-animations" value={toggles.videos} onChange={v=>setToggles({...toggles,videos:v})}/>
+          </>
+        )}
+
+        {/* RSVPS */}
+        {tab==='rsvps'&&(
+          <>
+            <div style={{fontFamily:"'Cinzel Decorative',serif",fontSize:'.8rem',color:'rgba(212,175,55,.7)',marginBottom:'1rem',letterSpacing:'.2em'}}>RSVP SUBMISSIONS ({rsvps.length})</div>
+            {rsvps.length===0&&<div style={{textAlign:'center',color:'rgba(253,248,231,.3)',padding:'3rem',fontStyle:'italic',fontFamily:"'Cormorant Garamond',serif"}}>No RSVPs yet</div>}
+            {rsvps.map((r,i)=>(
+              <div key={i} className="admin-card" style={{borderRadius:12,padding:'1.2rem',marginBottom:'.8rem'}}>
+                <div style={{display:'flex',justifyContent:'space-between',marginBottom:'.5rem'}}>
+                  <div style={{fontFamily:"'Great Vibes',cursive",fontSize:'1.3rem',color:'var(--gold-light)'}}>{r.name}</div>
+                  <div style={{fontSize:'.7rem',background:r.attending==='yes'?'rgba(0,200,100,.2)':'rgba(200,0,0,.2)',color:r.attending==='yes'?'#00c864':'#ff6b6b',padding:'.2rem .6rem',borderRadius:8}}>{r.attending==='yes'?'Attending':'Not Attending'}</div>
+                </div>
+                <div style={{fontSize:'.8rem',color:'rgba(253,248,231,.5)',fontFamily:"'Cormorant Garamond',serif"}}>Guests: {r.guests} • {new Date(r.timestamp).toLocaleString()}</div>
+                {r.message&&<div style={{marginTop:'.5rem',fontSize:'.8rem',color:'rgba(253,248,231,.6)',fontStyle:'italic',fontFamily:"'Cormorant Garamond',serif'}}>"{r.message}"</div>}
+              </div>
+            ))}
+          </>
+        )}
+
+        {/* WISHES */}
+        {tab==='wishes'&&(
+          <>
+            <div style={{fontFamily:"'Cinzel Decorative',serif",fontSize:'.8rem',color:'rgba(212,175,55,.7)',marginBottom:'1rem',letterSpacing:'.2em'}}>GUEST WISHES ({wishes.length})</div>
+            {wishes.length===0&&<div style={{textAlign:'center',color:'rgba(253,248,231,.3)',padding:'3rem',fontStyle:'italic',fontFamily:"'Cormorant Garamond',serif"}}>No wishes yet</div>}
+            {wishes.map((w,i)=>(
+              <div key={i} className="admin-card" style={{borderRadius:12,padding:'1.2rem',marginBottom:'.8rem'}}>
+                <div style={{fontFamily:"'Great Vibes',cursive",fontSize:'1.2rem',color:'var(--gold-light)',marginBottom:'.3rem'}}>{w.name}</div>
+                <div style={{fontSize:'.85rem',color:'rgba(253,248,231,.6)',fontStyle:'italic',fontFamily:"'Cormorant Garamond',serif"}}>"{w.message}"</div>
+                <div style={{fontSize:'.7rem',color:'rgba(253,248,231,.3)',marginTop:'.3rem'}}>{new Date(w.timestamp).toLocaleString()}</div>
+              </div>
+            ))}
+          </>
+        )}
+
+        {/* VISITORS */}
+        {tab==='visitors'&&(
+          <>
+            <div style={{fontFamily:"'Cinzel Decorative',serif",fontSize:'.8rem',color:'rgba(212,175,55,.7)',marginBottom:'1rem',letterSpacing:'.2em'}}>VISITOR LOG ({visitors.length})</div>
+            {visitors.length===0&&<div style={{textAlign:'center',color:'rgba(253,248,231,.3)',padding:'3rem',fontStyle:'italic',fontFamily:"'Cormorant Garamond',serif"}}>No visitors yet</div>}
+            {visitors.map((v,i)=>(
+              <div key={i} className="admin-card" style={{borderRadius:12,padding:'1rem',marginBottom:'.6rem',display:'flex',justifyContent:'space-between',alignItems:'center'}}>
+                <div>
+                  <div style={{fontFamily:"'Great Vibes',cursive",fontSize:'1.1rem',color:'var(--gold-light)'}}>{v.name||'Anonymous'}</div>
+                  <div style={{fontSize:'.7rem',color:'rgba(253,248,231,.4)',fontFamily:"'Cormorant Garamond',serif"}}>{v.device} • {v.browser} • {new Date(v.timestamp).toLocaleDateString()}</div>
+                </div>
+                <div style={{background:'rgba(212,175,55,.15)',borderRadius:20,padding:'.2rem .7rem',fontSize:'.7rem',color:'rgba(212,175,55,.7)'}}>×{v.visits||1}</div>
+              </div>
+            ))}
+          </>
+        )}
+
+        {/* CONTENT EDITOR */}
+        {tab==='content'&&(
+          <>
+            <Toggle label="Use Personal Engagement Content" desc="Enable to show your custom details" value={toggles.content} onChange={v=>setToggles({...toggles,content:v})}/>
+            {toggles.content&&(
+              <div className="admin-card" style={{borderRadius:16,padding:'1.5rem',marginTop:'1rem'}}>
+                <div style={{fontFamily:"'Cinzel Decorative',serif",fontSize:'.75rem',color:'rgba(212,175,55,.7)',marginBottom:'1.5rem',letterSpacing:'.15em'}}>PERSONAL DETAILS</div>
+                {[
+                  ['groomName','Groom Name'],['brideName','Bride Name'],
+                  ['groomFull','Groom Full Name'],['brideFull','Bride Full Name'],
+                  ['initials','Couple Initials'],['engagementDate','Engagement Date (YYYY-MM-DD)'],
+                  ['engagementTime','Engagement Time'],['venueName','Venue Name'],
+                  ['venueAddress','Full Address'],['mapsLink','Google Maps Link'],
+                  ['islamicQuote','Islamic Quote (Arabic)'],['islamicQuoteTranslation','Quote Translation'],
+                  ['customDua','Custom Dua'],['welcomeMsg','Welcome Message'],
+                  ['invitationMsg','Invitation Message'],['dressCode','Dress Code'],
+                  ['whatsappNumber','WhatsApp Number'],['familyNames','Family Names'],
+                  ['footerText','Footer Text'],['saveTheDateText','Save The Date Text'],
+                ].map(([field,label])=>(
+                  <div key={field} style={{marginBottom:'1rem'}}>
+                    <label style={{display:'block',fontSize:'.7rem',color:'rgba(212,175,55,.6)',marginBottom:'.3rem',fontFamily:"'Cormorant Garamond',serif",letterSpacing:'.1em',textTransform:'uppercase'}}>{label}</label>
+                    <input className="premium-input" style={{width:'100%',padding:'.7rem .9rem',borderRadius:8,fontSize:'.9rem'}} value={contentData[field]||''} onChange={e=>handleContentChange(field,e.target.value)}/>
+                  </div>
+                ))}
+              </div>
+            )}
+          </>
+        )}
+
+        {/* GALLERY MANAGER */}
+        {tab==='gallery'&&(
+          <>
+            <Toggle label="Use Personal Images & Gallery" desc="Upload your own photos" value={toggles.images} onChange={v=>setToggles({...toggles,images:v})}/>
+            {toggles.images&&(
+              <div style={{marginTop:'1rem'}}>
+                <label className="btn-gold" style={{display:'block',padding:'1rem',borderRadius:12,textAlign:'center',cursor:'pointer',fontFamily:"'Cinzel Decorative',serif",fontSize:'.75rem',letterSpacing:'.1em',border:'none',marginBottom:'1.5rem'}}>
+                  📁 Upload Photos
+                  <input type="file" accept="image/*" multiple style={{display:'none'}} onChange={handleImageUpload}/>
+                </label>
+                <div style={{display:'grid',gridTemplateColumns:'repeat(3,1fr)',gap:'.8rem'}}>
+                  {personalImages.map((img,i)=>(
+                    <div key={img.id} style={{position:'relative',borderRadius:8,overflow:'hidden',border:'1px solid rgba(212,175,55,.2)'}}>
+                      <img src={img.url} alt="" style={{width:'100%',aspectRatio:'1',objectFit:'cover',display:'block'}}/>
+                      <button onClick={()=>{const u=personalImages.filter((_,j)=>j!==i);setPersonalImages(u);ls.set('personal_images',u);}} style={{position:'absolute',top:4,right:4,background:'rgba(200,0,0,.8)',border:'none',color:'white',width:24,height:24,borderRadius:'50%',cursor:'pointer',fontSize:'.8rem'}}>×</button>
+                    </div>
+                  ))}
+                </div>
+                {personalImages.length===0&&<div style={{textAlign:'center',color:'rgba(253,248,231,.3)',padding:'3rem',fontStyle:'italic',fontFamily:"'Cormorant Garamond',serif"}}>No images uploaded yet</div>}
+              </div>
+            )}
+          </>
+        )}
+
+        {/* SETTINGS */}
+        {tab==='settings'&&(
+          <div>
+            <div style={{fontFamily:"'Cinzel Decorative',serif",fontSize:'.8rem',color:'rgba(212,175,55,.7)',marginBottom:'1rem',letterSpacing:'.2em'}}>ALL TOGGLES</div>
+            <Toggle label="Use Personal Engagement Content" desc="Show real couple details instead of demo data" value={toggles.content} onChange={v=>setToggles({...toggles,content:v})}/>
+            <Toggle label="Use Personal Images & Gallery" desc="Show uploaded photos instead of placeholders" value={toggles.images} onChange={v=>setToggles({...toggles,images:v})}/>
+            <Toggle label="Use Personal Animation & Video Media" desc="Use custom videos instead of auto-animations" value={toggles.videos} onChange={v=>setToggles({...toggles,videos:v})}/>
+
+            <div style={{marginTop:'2rem',fontFamily:"'Cinzel Decorative',serif",fontSize:'.8rem',color:'rgba(212,175,55,.7)',marginBottom:'1rem',letterSpacing:'.2em'}}>DANGER ZONE</div>
+            <button onClick={()=>{if(confirm('Clear all data?')){['rsvps','wishes','visitors','events','personal_images','custom_content'].forEach(k=>ls.rm(k));alert('Cleared!');window.location.reload();}}} style={{width:'100%',padding:'1rem',borderRadius:12,background:'rgba(200,0,0,.15)',border:'1px solid rgba(200,0,0,.3)',color:'#ff6b6b',cursor:'pointer',fontFamily:"'Cinzel Decorative',serif",fontSize:'.75rem',letterSpacing:'.1em'}}>
+              🗑 Clear All Data
+            </button>
+          </div>
+        )}
+      </div>
+    </div>
+  );
+};
+
+// ══════════════════════════════════════════════
+// MAIN APP
+// ══════════════════════════════════════════════
+const App=()=>{
+  const path=window.location.pathname;
+
+  // STATE
+  const [stage,setStage]=useState('loading'); // loading | intro | name | main
+  const [guestName,setGuestName]=useState(()=>ls.get('guest_name',''));
+  const [adminLoggedIn,setAdminLoggedIn]=useState(()=>!!ls.get('admin_session'));
+  const [toggles,setToggles]=useState(()=>ls.get('admin_toggles',{content:false,images:false,videos:false}));
+  const [contentData,setContentData]=useState(()=>({...DEMO_DATA,...(ls.get('custom_content')||{})}));
+  const [personalImages,setPersonalImages]=useState(()=>ls.get('personal_images',[]));
+  const [animTheme,setAnimTheme]=useState(ANIMATION_THEMES[0]);
+  const [activeSection,setActiveSection]=useState(0);
+
+  const displayData=toggles.content?{...DEMO_DATA,...contentData}:DEMO_DATA;
+
+  // Save toggles
+  useEffect(()=>ls.set('admin_toggles',toggles),[toggles]);
+
+  // Animation rotation every 2 min
+  useEffect(()=>{
+    const t=setInterval(()=>{
+      setAnimTheme(prev=>{
+        const i=ANIMATION_THEMES.indexOf(prev);
+        return ANIMATION_THEMES[(i+1)%ANIMATION_THEMES.length];
+      });
+    },120000);
+    return()=>clearInterval(t);
+  },[]);
+
+  // Auto-advance loading
+  const handleLoadDone=useCallback(()=>{
+    if(guestName)setStage('main');
+    else setStage('intro');
+  },[guestName]);
+
+  // ADMIN ROUTES
+  if(path==='/admin-login'||path.includes('admin-login')){
+    if(adminLoggedIn)return<AdminDashboard onLogout={()=>{setAdminLoggedIn(false);ls.rm('admin_session');}} contentData={contentData} setContentData={setContentData} toggles={toggles} setToggles={setToggles} personalImages={personalImages} setPersonalImages={setPersonalImages}/>;
+    return<AdminLogin onLogin={()=>setAdminLoggedIn(true)}/>;
+  }
+  if(path==='/admin-dashboard'||path.includes('admin-dashboard')){
+    if(!adminLoggedIn)return<AdminLogin onLogin={()=>setAdminLoggedIn(true)}/>;
+    return<AdminDashboard onLogout={()=>{setAdminLoggedIn(false);ls.rm('admin_session');}} contentData={contentData} setContentData={setContentData} toggles={toggles} setToggles={setToggles} personalImages={personalImages} setPersonalImages={setPersonalImages}/>;
+  }
+
+  // MAIN FLOW
+  if(stage==='loading')return<LoadingScreen onDone={handleLoadDone}/>;
+  if(stage==='intro')return<IntroScreen onEnter={()=>setStage('name')}/>;
+  if(stage==='name')return<NameEntry onSubmit={n=>{setGuestName(n);setStage('main');}}/>;
+
+  const navSections=[
+    {id:'hero',label:'Home'},{id:'story',label:'Story'},{id:'gallery',label:'Gallery'},
+    {id:'event',label:'Event'},{id:'invitation',label:'Invite'},{id:'rsvp',label:'RSVP'},{id:'wishes',label:'Wishes'},
+  ];
+
+  return(
+    <div style={{position:'relative'}}>
+      {/* Background particles (non-video mode) */}
+      {!toggles.videos&&<ParticleSystem theme={animTheme}/>}
+
+      {/* Scroll Nav */}
+      <ScrollNav sections={navSections} active={activeSection}/>
+
+      {/* Fixed bottom nav */}
+      <div style={{position:'fixed',bottom:0,left:0,right:0,background:'rgba(5,14,7,.95)',borderTop:'1px solid rgba(212,175,55,.2)',backdropFilter:'blur(20px)',padding:'.5rem',display:'flex',justifyContent:'space-around',zIndex:40}}>
+        {navSections.map((s,i)=>(
+          <button key={s.id} onClick={()=>{document.getElementById(s.id)?.scrollIntoView({behavior:'smooth'});setActiveSection(i);}} style={{background:'none',border:'none',color:activeSection===i?'var(--gold)':'rgba(253,248,231,.4)',cursor:'pointer',fontSize:'.6rem',fontFamily:"'Cinzel Decorative',serif",letterSpacing:'.05em',padding:'.3rem .4rem',transition:'all .2s',display:'flex',flexDirection:'column',alignItems:'center',gap:2}}>
+            {s.label}
+          </button>
+        ))}
+      </div>
+
+      {/* Admin quick link */}
+      <a href="/admin-login" style={{position:'fixed',top:12,right:12,background:'rgba(212,175,55,.1)',border:'1px solid rgba(212,175,55,.3)',color:'rgba(212,175,55,.6)',padding:'.3rem .7rem',borderRadius:20,fontSize:'.65rem',textDecoration:'none',fontFamily:"'Cormorant Garamond',serif",zIndex:40,backdropFilter:'blur(10px)'}}>Admin</a>
+
+      <MusicPlayer/>
+
+      {/* SECTIONS */}
+      <div id="hero"><HeroSection data={displayData} guestName={guestName}/></div>
+      <div id="story"><StorySection data={displayData}/></div>
+      <div id="gallery"><GallerySection personalImages={personalImages} usePersonal={toggles.images}/></div>
+      <div id="event"><EventSection data={displayData}/></div>
+      <div id="invitation"><InvitationCard data={displayData} guestName={guestName}/></div>
+      <div id="rsvp"><RSVPSection data={displayData} guestName={guestName}/></div>
+      <div id="wishes"><WishesSection guestName={guestName}/></div>
+      <Footer data={displayData}/>
+    </div>
+  );
+};
+
+// Mount
+const root=ReactDOM.createRoot(document.getElementById('root'));
+root.render(React.createElement(App));
+</script>
+</body>
+</html>
